@@ -22,5 +22,14 @@ namespace Domain.ArticleCategoryAgg
         {
             IsDeleted = true;
         }
+        public void ActiveArticleCategory()
+        {
+            IsDeleted = false;
+        }
+
+        public void EditTitle(string title)
+        {
+            Title = title;
+        }
     }
 }

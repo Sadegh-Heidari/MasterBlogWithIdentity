@@ -10,5 +10,6 @@ namespace DomainServices.ArticleCategory
 {
     public interface IArticleCategoryRepository : IBaseRepository<ArticleCateogry>
     {
+        ArticleCateogry? GetById(string id);
     }
 }

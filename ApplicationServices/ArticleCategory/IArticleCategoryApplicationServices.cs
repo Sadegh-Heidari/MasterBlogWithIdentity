@@ -11,5 +11,8 @@ namespace ApplicationServices.ArticleCategory
     {
         List<ArticleCategoryGetAndAddViewModel> GetAll();
         void Add(ArticleCategoryGetAndAddViewModel art);
+        void Delete(string Id);
+        void Active(string Id);
+        void Update(ArticleCategoryGetAndAddViewModel art);
     }
 }

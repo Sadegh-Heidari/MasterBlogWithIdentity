@@ -12,7 +12,7 @@ namespace Infrastructure.EFCORE.Base
 {
     public class BaseRepository<T>:IBaseRepository<T>where T:DomainBase
     {
-        private MasterContext _context { get; }
+        protected MasterContext _context { get; }
 
         public BaseRepository(MasterContext context)
         {
@@ -21,7 +21,7 @@ namespace Infrastructure.EFCORE.Base
 
         public List<T> getAll()
         {
-            return  _context.Set<T>().ToList();
+            return  _context.Set<T>().AsNoTracking().ToList();
         }
 
         public void Add(T entity)
@@ -31,7 +31,7 @@ namespace Infrastructure.EFCORE.Base
 
         public void Update(T entity)
         {
-            if (_context.Entry(entity).State != EntityState.Deleted)
+            if (_context.Entry(entity).State != EntityState.Deleted && entity!=null)
             {
                 _context.Set<T>().Update(entity);
             }

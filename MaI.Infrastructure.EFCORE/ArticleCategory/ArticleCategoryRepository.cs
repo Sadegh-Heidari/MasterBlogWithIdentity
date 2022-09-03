@@ -15,5 +15,11 @@ namespace Infrastructure.EFCORE.ArticleCategory
         public ArticleCategoryRepository(MasterContext context) : base(context)
         {
         }
+
+        public ArticleCateogry? GetById(string id)
+        {
+            var result = _context.ArticleCateogries.FirstOrDefault(c => c.Id == id);
+            return result;
+        }
     }
 }

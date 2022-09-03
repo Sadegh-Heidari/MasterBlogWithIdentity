@@ -7,6 +7,7 @@ namespace MasterIdentity.Areas.Admin.Pages.ArticleCategory
 {
     public class IndexModel : PageModel
     {
+        
         public List<ArticleCategoryGetAndAddViewModel>? ArticleCategory { get; set; }
         private IArticleCategoryApplicationServices _articleCategory { get; }
 
@@ -18,6 +19,17 @@ namespace MasterIdentity.Areas.Admin.Pages.ArticleCategory
         public void OnGet()
         {
              ArticleCategory = _articleCategory.GetAll();
+        }
+
+        public IActionResult OnPostActive(string Id)
+        {
+            _articleCategory.Active(Id);
+            return RedirectToPage("./Index");
+        }
+        public IActionResult OnPostRemove(string Id)
+        {
+            _articleCategory.Delete(Id);
+            return RedirectToPage("./Index");
         }
     }
 }

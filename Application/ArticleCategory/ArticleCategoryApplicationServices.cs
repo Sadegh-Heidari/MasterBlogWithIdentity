@@ -32,7 +32,6 @@ namespace Application.ArticleCategory
                     Title = x.Title,
                     IsDeleted = x.IsDeleted,
                 }).ToList();
-            _unitOfWork.Dispose();
             return result;
         }
 
@@ -40,6 +39,35 @@ namespace Application.ArticleCategory
         {
             var articleCategory = new ArticleCateogry(art.Title);
             _unitOfWork.ArticleCategoryRepository.Add(articleCategory);
+          
+        }
+
+        public void Delete(string Id)
+        {
+            var art = _unitOfWork.ArticleCategoryRepository.GetById(Id);
+            art!.DeleteArticleCategory();
+            _unitOfWork.ArticleCategoryRepository.Update(art);
+            SaveAndDispose();
+        }
+
+        public void Active(string Id)
+        {
+            var art = _unitOfWork.ArticleCategoryRepository.GetById(Id);
+            art!.ActiveArticleCategory();
+            _unitOfWork.ArticleCategoryRepository.Update(art);
+            SaveAndDispose();
+        }
+
+        public void Update(ArticleCategoryGetAndAddViewModel art)
+        {
+            var article = _unitOfWork.ArticleCategoryRepository.GetById(art.Id!)!;
+            article.EditTitle(art.Title);
+            _unitOfWork.ArticleCategoryRepository.Update(article);
+            SaveAndDispose();
+        }
+
+        private void SaveAndDispose()
+        {
             _unitOfWork.SaveChanges();
             _unitOfWork.Dispose();
         }

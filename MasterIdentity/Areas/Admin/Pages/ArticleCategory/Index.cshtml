@@ -1,4 +1,5 @@
 ﻿@page
+@using Domain.ArticleCategoryAgg
 @model MasterIdentity.Areas.Admin.Pages.ArticleCategory.IndexModel
 @{
 }
@@ -40,19 +41,23 @@
                         </td>
                         <td>@art.CreationDate</td>
                         <td>
-                            <a class="btn btn-warning float-left mr-3" asp-area="Admin" asp-page="./Edit" asp-route-id="@art.Id">Rename</a>
+                            <form class=" float-left mr-3" method="post" asp-page="./Edit">
+                                <input type="hidden" asp-for="@art.Title"/>
+                                <input type="hidden" asp-for="@art.Id"/>
+                                <button type="submit" class="btn btn-warning">Rename</button>
+                            </form>
                             @if (art.IsDeleted)
                             {
                                 <form method="post" asp-page-handler="Active" class="float-left">
                                     <button class="btn btn-success">Active</button>
-                                    <input type="hidden" name="id" value="@art.Id" />
+                                    <input type="hidden" name="@nameof(art.Id)" value="@art.Id"/>
                                 </form>
                             }
                             else
                             {
                                 <form method="post" asp-page-handler="Remove" class="float-left">
                                     <button class="btn btn-danger">Remove</button>
-                                    <input type="hidden" name="id" value="@art.Id" />
+                                    <input type="hidden" name="@nameof(art.Id)" value="@art.Id"/>
                                 </form>
                             }
                         </td>
