@@ -30,6 +30,7 @@ namespace Application.ArticleCategory
                     CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture),
                     Id = x.Id,
                     Title = x.Title,
+                    IsDeleted = x.IsDeleted,
                 }).ToList();
             _unitOfWork.Dispose();
             return result;
