@@ -13,17 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{E46B543A-E7D3-4C71-BFA4-788ABE4CC05B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{F593E7B3-6B6D-4614-B43E-AC39CF929609}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{F593E7B3-6B6D-4614-B43E-AC39CF929609}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationServices", "ApplicationServices\ApplicationServices.csproj", "{B613B338-0BCD-4C2F-A6CD-68A914D8B8A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationServices", "ApplicationServices\ApplicationServices.csproj", "{B613B338-0BCD-4C2F-A6CD-68A914D8B8A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{ED70A429-DB3E-46E7-91BA-EE032509B2CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{ED70A429-DB3E-46E7-91BA-EE032509B2CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainServices", "DomainServices\DomainServices.csproj", "{096927CD-8812-44E3-B00B-58170541DD78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainServices", "DomainServices\DomainServices.csproj", "{096927CD-8812-44E3-B00B-58170541DD78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.EFCORE", "MaI.Infrastructure.EFCORE\Infrastructure.EFCORE.csproj", "{12F248B9-0E25-430C-AE4A-938CE9819A5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.EFCORE", "MaI.Infrastructure.EFCORE\Infrastructure.EFCORE.csproj", "{12F248B9-0E25-430C-AE4A-938CE9819A5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterIdentity", "MasterIdentity\MasterIdentity.csproj", "{3266575A-6BC2-4828-872F-43A43F43BF69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterIdentity", "MasterIdentity\MasterIdentity.csproj", "{3266575A-6BC2-4828-872F-43A43F43BF69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Utility", "Infrastructure.Utility\Infrastructure.Utility.csproj", "{0C2A32D4-3B6D-4691-968F-1319EB0263EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{3266575A-6BC2-4828-872F-43A43F43BF69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3266575A-6BC2-4828-872F-43A43F43BF69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3266575A-6BC2-4828-872F-43A43F43BF69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C2A32D4-3B6D-4691-968F-1319EB0263EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C2A32D4-3B6D-4691-968F-1319EB0263EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C2A32D4-3B6D-4691-968F-1319EB0263EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C2A32D4-3B6D-4691-968F-1319EB0263EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{096927CD-8812-44E3-B00B-58170541DD78} = {57506E01-290D-44CD-83C3-1D4CD0ED6D34}
 		{12F248B9-0E25-430C-AE4A-938CE9819A5D} = {45DD060E-07EB-4A67-BEE7-342B7D226347}
 		{3266575A-6BC2-4828-872F-43A43F43BF69} = {27894585-703D-4289-8E61-690DFDBB8927}
+		{0C2A32D4-3B6D-4691-968F-1319EB0263EF} = {45DD060E-07EB-4A67-BEE7-342B7D226347}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE9A1673-0577-4885-B574-EFBBD6FC81AC}

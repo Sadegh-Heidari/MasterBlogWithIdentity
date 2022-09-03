@@ -1,10 +1,16 @@
+using Infrastructure.EFCORE.ContextDB;
+using Infrastructure.Utility.ServicePresentationLayyer;
+using Microsoft.AspNetCore.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddIoc(builder.Configuration.GetConnectionString("Sql"));
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<MasterContext>().AddDefaultTokenProviders();
 var app = builder.Build();
-
+app.Services.AutoCreatDataBase();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
