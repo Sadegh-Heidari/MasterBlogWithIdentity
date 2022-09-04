@@ -12,6 +12,7 @@ namespace Infrastructure.EFCORE.ContextDB
     public class MasterContext:IdentityDbContext
     {
         public DbSet<ArticleCateogry> ArticleCateogries { get; set; }
+        public DbSet<Domain.ArticleAgg.Article> Articles { get; set; }
         public MasterContext(DbContextOptions<MasterContext> options) : base(options)
         {
         }

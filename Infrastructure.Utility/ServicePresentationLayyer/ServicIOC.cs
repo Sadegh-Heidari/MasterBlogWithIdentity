@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Article;
 using Application.ArticleCategory;
+using ApplicationServices.Article;
 using ApplicationServices.ArticleCategory;
+using DomainServices.Article;
 using DomainServices.ArticleCategory;
 using DomainServices.Base;
 using DomainServices.UnitOfWork;
+using Infrastructure.EFCORE.Article;
 using Infrastructure.EFCORE.ArticleCategory;
 using Infrastructure.EFCORE.ContextDB;
 using Infrastructure.EFCORE.UnitOfWork;
@@ -24,7 +28,8 @@ namespace Infrastructure.Utility.ServicePresentationLayyer
             service.AddTransient<IArticleCategoryApplicationServices, ArticleCategoryApplicationServices>();
             service.AddTransient<IArticleCategoryRepository,ArticleCategoryRepository>();
 
-
+            service.AddTransient<IArticleRepository, ArticleRepository>();
+            service.AddTransient<IArticleApplication, ArticleApplication>();
             service.AddTransient<IUnitOfWork, UnitOfWork>();
             service.AddDbContext<MasterContext>(x => x.UseSqlServer(Connection));
 

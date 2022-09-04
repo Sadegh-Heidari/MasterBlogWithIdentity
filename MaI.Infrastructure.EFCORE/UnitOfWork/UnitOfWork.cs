@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DomainServices.Article;
 using DomainServices.ArticleCategory;
 using DomainServices.UnitOfWork;
+using Infrastructure.EFCORE.Article;
 using Infrastructure.EFCORE.ArticleCategory;
 using Infrastructure.EFCORE.ContextDB;
 
@@ -14,6 +16,7 @@ namespace Infrastructure.EFCORE.UnitOfWork
     {
         private bool IsDisposed { get; set; }
         private IArticleCategoryRepository _articleCategoryRepository;
+        private IArticleRepository _articleRepository;
         private MasterContext _masterContext { get; }
 
         public UnitOfWork(MasterContext masterContext)
@@ -31,6 +34,19 @@ namespace Infrastructure.EFCORE.UnitOfWork
                     _articleCategoryRepository = new ArticleCategoryRepository(_masterContext);
                 }
                 return _articleCategoryRepository;
+            }
+        }
+
+        public IArticleRepository ArticleRepository
+        {
+            get
+            {
+                if (_articleRepository == null)
+                {
+                    _articleRepository = new ArticleRepository(_masterContext);
+                }
+
+                return _articleRepository;
             }
         }
 

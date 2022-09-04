@@ -18,6 +18,7 @@ namespace Infrastructure.EFCORE.Mapping
             builder.Property(x => x.Title);
             builder.Property(x => x.CreationDate);
             builder.Property(x => x.IsDeleted);
+            builder.HasMany(x => x.Articles).WithOne(x => x.ArticleCateogry).HasForeignKey(x => x.ArticleCategoryID);
         }
     }
 }

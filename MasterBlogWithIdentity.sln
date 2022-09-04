@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.EFCORE", "Ma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterIdentity", "MasterIdentity\MasterIdentity.csproj", "{3266575A-6BC2-4828-872F-43A43F43BF69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Utility", "Infrastructure.Utility\Infrastructure.Utility.csproj", "{0C2A32D4-3B6D-4691-968F-1319EB0263EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Utility", "Infrastructure.Utility\Infrastructure.Utility.csproj", "{0C2A32D4-3B6D-4691-968F-1319EB0263EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
