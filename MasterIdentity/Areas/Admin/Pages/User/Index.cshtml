@@ -1,0 +1,72 @@
+﻿@page
+@model MasterIdentity.Areas.Admin.Pages.User.IndexModel
+@{
+}
+
+<p>
+    <a asp-action="CreatUsersAdmin">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               ID
+            </th>
+            <th>
+                User Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                EmailConfirmed
+            </th>
+            <th>
+                PhoneNumber
+            </th>
+            <th>
+                AccessFailedCount
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UserList)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccessFieldCount)
+                </td>
+                @*@{
+                    var result = _AuthorizationService.AuthorizeAsync(User, item, "Isuser").Result;
+                    var admin = _AuthorizationService.AuthorizeAsync(User, "Admin").Result;
+                }
+                @if (result.Succeeded == true || admin.Succeeded == true)
+                {
+                    
+                }*@
+                <td>
+                    <a asp-page-handler="Delete" asp-route-id="@item.Id">Delete |</a>
+                    <a asp-page-handler="Delete" asp-route-id="@item.Id">Add User Role</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

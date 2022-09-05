@@ -1,0 +1,41 @@
+﻿@page
+@model MasterIdentity.Pages.Register.LogInModel
+@{
+}
+<div class="container">
+    
+    <h1>LogIn</h1>
+
+    <h4>login</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="login.Email" class="control-label"></label>
+                    <input asp-for="login.Email" class="form-control" />
+                    <span asp-validation-for="login.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="login.Password" class="control-label"></label>
+                    <input asp-for="login.Password" class="form-control" />
+                    <span asp-validation-for="login.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="login.IsPersistance" /> @Html.DisplayNameFor(model => model.login.IsPersistance)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    @*<div>
+        <a class="btn btn-danger" asp-action="ExternalLogin">ورود با گوگل</a>
+    </div>*@
+</div>

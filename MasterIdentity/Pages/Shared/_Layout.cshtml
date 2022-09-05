@@ -63,6 +63,22 @@
                         <li class="nav-item">
                             <a asp-area="Admin" asp-page="Index" class="nav-link active ">Administrator</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated==false)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="" asp-page="/Register/SignUp" class="nav-link active ml-auto">SignUp</a>
+
+                            </li>
+                            <li class="nav-item">
+                                <a asp-area="" asp-page="/Register/LogIn" class="nav-link active ml-auto">LogIn</a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated == true)
+                        {
+                            <li class="nav-item">
+                                <a asp-area="" asp-page="/Register/logIn" asp-page-handler="LogOut" class="nav-link active ml-auto">LogOut</a>
+                            </li>
+                        }
                     </ul>
                     <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
                     <ul class="langs navbar-text"><a href="#" class="active">EN</a><span>           </span><a href="#">ES</a></ul>
