@@ -27,11 +27,7 @@ namespace Infrastructure.EFCORE.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ArticleCategoryID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ArticleCateogryId")
+                    b.Property<string>("ArticleCategoryId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -59,12 +55,12 @@ namespace Infrastructure.EFCORE.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArticleCateogryId");
+                    b.HasIndex("ArticleCategoryId");
 
                     b.ToTable("Articles");
                 });
 
-            modelBuilder.Entity("Domain.ArticleCategoryAgg.ArticleCateogry", b =>
+            modelBuilder.Entity("Domain.ArticleCategoryAgg.ArticleCategory", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -284,13 +280,13 @@ namespace Infrastructure.EFCORE.Migrations
 
             modelBuilder.Entity("Domain.ArticleAgg.Article", b =>
                 {
-                    b.HasOne("Domain.ArticleCategoryAgg.ArticleCateogry", "ArticleCateogry")
+                    b.HasOne("Domain.ArticleCategoryAgg.ArticleCategory", "ArticleCategory")
                         .WithMany("Articles")
-                        .HasForeignKey("ArticleCateogryId")
+                        .HasForeignKey("ArticleCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ArticleCateogry");
+                    b.Navigation("ArticleCategory");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -344,7 +340,7 @@ namespace Infrastructure.EFCORE.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.ArticleCategoryAgg.ArticleCateogry", b =>
+            modelBuilder.Entity("Domain.ArticleCategoryAgg.ArticleCategory", b =>
                 {
                     b.Navigation("Articles");
                 });

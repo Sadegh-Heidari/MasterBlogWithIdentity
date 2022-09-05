@@ -1,5 +1,6 @@
 using ApplicationServices.ArticleCategory;
-using ApplicationServices.ArticleCategory.ViewModel;
+using ApplicationServices.ArticleCategory.DTO;
+using MasterIdentity.Areas.Admin.Pages.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -7,10 +8,10 @@ namespace MasterIdentity.Areas.Admin.Pages.ArticleCategory
 {
     public class AddNewModel : PageModel
     {
-       [BindProperty] public ArticleCategoryGetAndAddViewModel? ArticleCategory { get; set; }
-        private IArticleCategoryApplicationServices _articleCategoryModel { get; }
+       [BindProperty] public ArticleCategoryViewModel ArticleCategory { get; set; }
+        private IArticleCategoryApplication _articleCategoryModel { get; }
 
-        public AddNewModel(IArticleCategoryApplicationServices articleCategoryModel)
+        public AddNewModel(IArticleCategoryApplication articleCategoryModel)
         {
             _articleCategoryModel = articleCategoryModel;
         }
@@ -22,7 +23,7 @@ namespace MasterIdentity.Areas.Admin.Pages.ArticleCategory
         {
             if (ModelState.IsValid)
             {
-                _articleCategoryModel.Add(ArticleCategory!);
+                _articleCategoryModel.Add(ArticleCategory.Title!);
                 return RedirectToPage("./Index");
             }
 

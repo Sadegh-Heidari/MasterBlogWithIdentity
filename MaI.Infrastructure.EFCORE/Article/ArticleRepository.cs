@@ -18,16 +18,34 @@ namespace Infrastructure.EFCORE.Article
         }
 
 
-        public List<T> GetListWithFilter<T>() where T : IArticleListViewModel,new()
+        public List<T> GetListWithSelect<T>() where T : IArticleListDTO,new()
         {
-            var result = _context.Articles.Include(x => x.ArticleCateogry).Select(x => new T
+            var result = _context.Articles.Include(x=>x.ArticleCategory).Select(x => new T
             {
                 Title = x.Title,
-                ArticleCategoryTitle = x.ArticleCateogry.Title,
+                ArticleCategoryTitle = x.ArticleCategory.Title,
                 CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture),
                 Id = x.Id,
                 IsDeleted = x.IsDeleted,
             }).ToList();
+            return result;
+        }
+
+        public Domain.ArticleAgg.Article? GetById(string id)
+        {
+            var result = _context.Articles.FirstOrDefault(x => x.Id == id);
+            return result;
+        }
+
+        public T? GetById<T>(string Id) where T : IGetArticleDto, new()
+        {
+            var result = _context.Articles.Where(x=>x.Id==Id).Select(x=>new T
+            {
+                Content = x.Content,
+                Image = x.Image,
+                ShortDescription = x.ShortDescription,
+                Title = x.Title
+            }).FirstOrDefault();
             return result;
         }
     }

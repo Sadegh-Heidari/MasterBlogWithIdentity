@@ -6,26 +6,26 @@ using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using ApplicationServices.ArticleCategory;
-using ApplicationServices.ArticleCategory.ViewModel;
+using ApplicationServices.ArticleCategory.DTO;
 using Domain.ArticleCategoryAgg;
 using DomainServices.ArticleCategory;
 using DomainServices.UnitOfWork;
 
 namespace Application.ArticleCategory
 {
-    public class ArticleCategoryApplicationServices: IArticleCategoryApplicationServices
+    public class ArticleCategoryApplication: IArticleCategoryApplication
     {
         private IUnitOfWork _unitOfWork { get; }
 
-        public ArticleCategoryApplicationServices(IUnitOfWork unitOfWork)
+        public ArticleCategoryApplication(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public List<ArticleCategoryGetAndAddViewModel> GetAll()
+        public List<ArticleCategoryGetAndAddDto> GetAll()
         {
             var result = _unitOfWork.ArticleCategoryRepository.getAll().Select(x =>
-                new ArticleCategoryGetAndAddViewModel
+                new ArticleCategoryGetAndAddDto
                 {
                     CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture),
                     Id = x.Id,
@@ -35,12 +35,13 @@ namespace Application.ArticleCategory
             return result;
         }
 
-        public void Add(ArticleCategoryGetAndAddViewModel art)
+        public void Add(string Title)
         {
-            var articleCategory = new ArticleCateogry(art.Title);
+            var articleCategory = new Domain.ArticleCategoryAgg.ArticleCategory(Title);
             _unitOfWork.ArticleCategoryRepository.Add(articleCategory);
-          
+            SaveAndDispose();
         }
+
 
         public void Delete(string Id)
         {
@@ -58,13 +59,20 @@ namespace Application.ArticleCategory
             SaveAndDispose();
         }
 
-        public void Update(ArticleCategoryGetAndAddViewModel art)
+        public void Update(string Title, string Id)
         {
-            var article = _unitOfWork.ArticleCategoryRepository.GetById(art.Id!)!;
-            article.EditTitle(art.Title);
+            var article = _unitOfWork.ArticleCategoryRepository.GetById(Id!)!;
+            article.EditTitle(Title);
             _unitOfWork.ArticleCategoryRepository.Update(article);
             SaveAndDispose();
         }
+
+        public List<GetArticleCategoryTitle> GetTitle()
+        {
+            var result = _unitOfWork.ArticleCategoryRepository.GetTitleCategory<GetArticleCategoryTitle>();
+            return result;
+        }
+
 
         private void SaveAndDispose()
         {

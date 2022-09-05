@@ -16,18 +16,36 @@ namespace Domain.ArticleAgg
         public string Content { get; private set; }
         public bool IsDeleted { get; private set; }
 
-        public string ArticleCategoryID { get; private set; }
-        public ArticleCateogry ArticleCateogry { get; private set; }
+        public string ArticleCategoryId { get; private set; }
+        public ArticleCategory ArticleCategory { get; private set; }
 
-        public Article(string title, string shortDescription, string image, string content)
+        protected Article()
+        {
+        }
+
+        public Article(string title, string shortDescription, string image, string content,string articleCategoryId)
         {
             Title = title;
             ShortDescription = shortDescription;
             Image = image;
             Content = content;
             IsDeleted = false;
+            ArticleCategoryId = articleCategoryId;
         }
 
+        public void Edit(string title, string shortDescription, string image, string content, string articleCategoryId)
+        {
+            Title = title;
+            ShortDescription = shortDescription;
+            Image = image;
+            Content = content;
+            ArticleCategoryId = articleCategoryId;
+        }
+
+        public void Active()
+        {
+            IsDeleted = false;
+        }
         public void Delete()
         {
             IsDeleted=true;

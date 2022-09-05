@@ -9,6 +9,8 @@ namespace DomainServices.Article
 {
     public interface IArticleRepository:IBaseRepository<Domain.ArticleAgg.Article>
     {
-        List<T> GetListWithFilter<T>() where T : IArticleListViewModel,new();
+        List<T> GetListWithSelect<T>() where T : IArticleListDTO,new();
+        Domain.ArticleAgg.Article? GetById(string id);
+        T GetById<T>(string Id) where T:IGetArticleDto , new();
     }
 }

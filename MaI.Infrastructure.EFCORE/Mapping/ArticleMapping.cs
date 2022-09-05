@@ -12,7 +12,7 @@ namespace Infrastructure.EFCORE.Mapping
     {
         public void Configure(EntityTypeBuilder<Domain.ArticleAgg.Article> builder)
         {
-            builder.ToTable("ArticleCategories");
+            builder.ToTable("Article");
             builder.Property(x => x.Id).IsRequired();
             builder.Property(x => x.Title);
             builder.Property(x => x.CreationDate);
@@ -20,7 +20,8 @@ namespace Infrastructure.EFCORE.Mapping
             builder.Property(x => x.Content);
             builder.Property(x => x.Image);
             builder.Property(x => x.ShortDescription);
-            builder.HasOne(x => x.ArticleCateogry).WithMany(x => x.Articles).HasForeignKey(x => x.ArticleCategoryID);
+            builder.Property(x => x.ArticleCategoryId).HasMaxLength(450);
+            builder.HasOne(x => x.ArticleCategory).WithMany(x => x.Articles).HasForeignKey(x => x.ArticleCategoryId);
         }
     }
 }

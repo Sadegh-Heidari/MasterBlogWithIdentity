@@ -25,7 +25,7 @@ namespace Infrastructure.Utility.ServicePresentationLayyer
     {
         public static void AddIoc(this IServiceCollection service,string Connection)
         {
-            service.AddTransient<IArticleCategoryApplicationServices, ArticleCategoryApplicationServices>();
+            service.AddTransient<IArticleCategoryApplication, ArticleCategoryApplication>();
             service.AddTransient<IArticleCategoryRepository,ArticleCategoryRepository>();
 
             service.AddTransient<IArticleRepository, ArticleRepository>();

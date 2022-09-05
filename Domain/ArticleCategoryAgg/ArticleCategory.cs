@@ -8,13 +8,17 @@ using Domain.BaseDomainAgg;
 
 namespace Domain.ArticleCategoryAgg
 {
-    public class ArticleCateogry:DomainBase
+    public class ArticleCategory:DomainBase
     {
         public string Title { get; private set; }
         public bool IsDeleted { get; private set; }
         public ICollection<Article> Articles { get; private set; }
 
-        public ArticleCateogry(string title)
+        protected ArticleCategory()
+        {
+        }
+
+        public ArticleCategory(string title)
         {
             Title = title;
             IsDeleted = false;

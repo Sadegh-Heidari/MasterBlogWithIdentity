@@ -1,0 +1,59 @@
+﻿@page
+@model MasterIdentity.Areas.Admin.Pages.Article.CreatModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h2>Creat New Article</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="Article.Title">Title : </label>
+                            <input type="text" asp-for="Article.Title" class="form-control" />
+                            <span class="text text-danger" asp-validation-for="Article.Title"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="Article.ShortDescription">Short Description : </label>
+                            <textarea asp-for="Article.ShortDescription" class="form-control" rows="3"></textarea>
+                            <span class="text text-danger" asp-validation-for="Article.ShortDescription"></span>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="Article.UploadFile">Image : </label>
+                            <input type="file" asp-for="Article.UploadFile" class="form-control" />
+                            <span asp-validation-for="Article.UploadFile" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="Article.Content">Content : </label>
+                            <textarea asp-for="Article.Content" class="form-control" rows="5"></textarea>
+                            <span class="text text-danger" asp-validation-for="Article.Content"></span>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="Article.ArticleCategoryId">Select Article Category : </label>
+                            <select asp-for="Article.ArticleCategoryId" asp-items="Model.Article.CategoryItem" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Creat" class="btn btn-success" />
+                        <a class="btn btn-dark" asp-area="Admin" asp-page="./Index">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

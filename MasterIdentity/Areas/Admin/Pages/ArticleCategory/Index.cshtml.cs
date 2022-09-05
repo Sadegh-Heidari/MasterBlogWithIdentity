@@ -1,5 +1,5 @@
 using ApplicationServices.ArticleCategory;
-using ApplicationServices.ArticleCategory.ViewModel;
+using ApplicationServices.ArticleCategory.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -8,10 +8,10 @@ namespace MasterIdentity.Areas.Admin.Pages.ArticleCategory
     public class IndexModel : PageModel
     {
         
-        public List<ArticleCategoryGetAndAddViewModel>? ArticleCategory { get; set; }
-        private IArticleCategoryApplicationServices _articleCategory { get; }
+        public List<ArticleCategoryGetAndAddDto>? ArticleCategory { get; set; }
+        private IArticleCategoryApplication _articleCategory { get; }
 
-        public IndexModel(IArticleCategoryApplicationServices articleCategory)
+        public IndexModel(IArticleCategoryApplication articleCategory)
         {
             _articleCategory = articleCategory;
         }

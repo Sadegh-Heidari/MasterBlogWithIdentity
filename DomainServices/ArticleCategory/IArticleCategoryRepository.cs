@@ -8,8 +8,9 @@ using DomainServices.Base;
 
 namespace DomainServices.ArticleCategory
 {
-    public interface IArticleCategoryRepository : IBaseRepository<ArticleCateogry>
+    public interface IArticleCategoryRepository : IBaseRepository<Domain.ArticleCategoryAgg.ArticleCategory>
     {
-        ArticleCateogry? GetById(string id);
+        Domain.ArticleCategoryAgg.ArticleCategory? GetById(string id);
+        List<T> GetTitleCategory<T>() where T : IGetArticleCategoryTitle, new();
     }
 }

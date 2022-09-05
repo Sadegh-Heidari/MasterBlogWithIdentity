@@ -1,5 +1,6 @@
 using ApplicationServices.ArticleCategory;
-using ApplicationServices.ArticleCategory.ViewModel;
+using ApplicationServices.ArticleCategory.DTO;
+using MasterIdentity.Areas.Admin.Pages.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -7,10 +8,10 @@ namespace MasterIdentity.Areas.Admin.Pages.ArticleCategory
 {
     public class EditModel : PageModel
     {
-        [BindProperty] public ArticleCategoryGetAndAddViewModel? art { get; set; }
-        private IArticleCategoryApplicationServices _articleCategory { get; }
+        [BindProperty] public ArticleCategoryViewModel art { get; set; }
+        private IArticleCategoryApplication _articleCategory { get; }
 
-        public EditModel(IArticleCategoryApplicationServices articleCategory)
+        public EditModel(IArticleCategoryApplication articleCategory)
         {
             _articleCategory = articleCategory;
         }
@@ -30,7 +31,7 @@ namespace MasterIdentity.Areas.Admin.Pages.ArticleCategory
         {
             if (ModelState.IsValid)
             {
-                _articleCategory.Update(art!);
+                _articleCategory.Update(art.Title!,art.Id!);
                 return RedirectToPage("./Index");
             }
 

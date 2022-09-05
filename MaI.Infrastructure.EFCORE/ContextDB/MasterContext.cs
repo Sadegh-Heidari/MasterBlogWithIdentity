@@ -11,7 +11,7 @@ namespace Infrastructure.EFCORE.ContextDB
 {
     public class MasterContext:IdentityDbContext
     {
-        public DbSet<ArticleCateogry> ArticleCateogries { get; set; }
+        public DbSet<Domain.ArticleCategoryAgg.ArticleCategory> ArticleCateogries { get; set; }
         public DbSet<Domain.ArticleAgg.Article> Articles { get; set; }
         public MasterContext(DbContextOptions<MasterContext> options) : base(options)
         {
@@ -19,7 +19,7 @@ namespace Infrastructure.EFCORE.ContextDB
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            var assembly = typeof(ArticleCateogry).Assembly;
+            var assembly = typeof(Domain.ArticleCategoryAgg.ArticleCategory).Assembly;
             builder.ApplyConfigurationsFromAssembly(assembly);
             base.OnModelCreating(builder);
         }

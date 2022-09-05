@@ -6,7 +6,7 @@
     <div class="card-header">
         <h3 class="float-left">Article List</h3>
         <div class="float-right">
-            <a class="btn btn-success" asp-area="Admin" asp-page="./CreatArticle">Add New</a>
+            <a class="btn btn-success" asp-area="Admin" asp-page="./Creat">Add New</a>
         </div>
     </div>
     <div class="card-body">
@@ -22,15 +22,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var art in Model.ArticleListViewModels)
+                @foreach (var Article in Model.ArticleListViewModels)
                 {
                     <tr>
-                        <td>@art.Id</td>
-                        <td>@art.Title</td>
-                        <td>@art.ArticleCategoryTitle</td>
+                        <td>@Article.Id</td>
+                        <td>@Article.Title</td>
+                        <td>@Article.ArticleCategoryTitle</td>
                         <td>
 
-                            @if (art.IsDeleted)
+                            @if (Article.IsDeleted)
                             {
                                 <i class="fa fa-close fa-2x text-danger"></i>
                             }
@@ -40,21 +40,21 @@
                             }
 
                         </td>
-                        <td>@art.CreationDate</td>
+                        <td>@Article.CreationDate</td>
                         <td>
-                            <a class="btn btn-warning float-left mr-3" asp-area="Admin" asp-page="./EditArticle" asp-route-id="@art.Id">Edit</a>
-                            @if (art.IsDeleted)
+                            <a class="btn btn-warning float-left mr-3" asp-page="./Edit" asp-route-Id="@Article.Id">Edit</a>
+                            @if (Article.IsDeleted)
                             {
                                 <form method="post" asp-page-handler="Active" class="float-left">
                                     <button class="btn btn-success">Active</button>
-                                    <input type="hidden" name="@nameof(art.Id)" value="@art.Id" />
+                                    <input type="hidden" name="@nameof(Article.Id)" value="@Article.Id"/>
                                 </form>
                             }
                             else
                             {
                                 <form method="post" asp-page-handler="Remove" class="float-left">
                                     <button class="btn btn-danger">Remove</button>
-                                    <input type="hidden" name="@nameof(art.Id)" value="@art.Id" />
+                                    <input type="hidden" name="@nameof(Article.Id)" value="@Article.Id"/>
                                 </form>
                             }
                         </td>
