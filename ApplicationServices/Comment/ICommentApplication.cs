@@ -12,5 +12,6 @@ namespace ApplicationServices.Comment
         List<CommentListDTO> GetAllComments();
         void Confirm(string Id);
         void Cancel(string Id);
+        void AddComment(string name, string email, string message, string articleId);
     }
 }

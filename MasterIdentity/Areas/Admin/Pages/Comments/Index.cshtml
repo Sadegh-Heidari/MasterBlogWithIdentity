@@ -56,10 +56,7 @@
                                     <button class="btn btn-success">Confirm</button>
                                     <input type="hidden" name="@nameof(comment.Id)" value="@comment.Id" />
                                 </form>
-                                <form method="post" asp-page-handler="Cancel" class="float-left">
-                                    <button class="btn btn-danger">Cancel</button>
-                                    <input type="hidden" name="@nameof(comment.Id)" value="@comment.Id" />
-                                </form>
+                             
                             }
                             else if (comment.Status == true)
                             {

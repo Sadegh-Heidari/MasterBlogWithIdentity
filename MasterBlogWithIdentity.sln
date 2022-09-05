@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterIdentity", "MasterIde
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Utility", "Infrastructure.Utility\Infrastructure.Utility.csproj", "{0C2A32D4-3B6D-4691-968F-1319EB0263EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Query.EFCORE", "Infrastructure.Query.EFCORE\Infrastructure.Query.EFCORE.csproj", "{4E56DB58-4C73-49C0-AD44-F7669F703C15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{0C2A32D4-3B6D-4691-968F-1319EB0263EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C2A32D4-3B6D-4691-968F-1319EB0263EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C2A32D4-3B6D-4691-968F-1319EB0263EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E56DB58-4C73-49C0-AD44-F7669F703C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E56DB58-4C73-49C0-AD44-F7669F703C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E56DB58-4C73-49C0-AD44-F7669F703C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E56DB58-4C73-49C0-AD44-F7669F703C15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{12F248B9-0E25-430C-AE4A-938CE9819A5D} = {45DD060E-07EB-4A67-BEE7-342B7D226347}
 		{3266575A-6BC2-4828-872F-43A43F43BF69} = {27894585-703D-4289-8E61-690DFDBB8927}
 		{0C2A32D4-3B6D-4691-968F-1319EB0263EF} = {45DD060E-07EB-4A67-BEE7-342B7D226347}
+		{4E56DB58-4C73-49C0-AD44-F7669F703C15} = {45DD060E-07EB-4A67-BEE7-342B7D226347}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE9A1673-0577-4885-B574-EFBBD6FC81AC}

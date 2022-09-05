@@ -64,6 +64,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Query.EFCORE\Infrastructure.Query.EFCORE.csproj" />
     <ProjectReference Include="..\Infrastructure.Utility\Infrastructure.Utility.csproj" />
     <ProjectReference Include="..\MaI.Infrastructure.EFCORE\Infrastructure.EFCORE.csproj" />
   </ItemGroup>

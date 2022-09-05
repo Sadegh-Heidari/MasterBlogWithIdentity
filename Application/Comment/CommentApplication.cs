@@ -39,6 +39,14 @@ namespace Application.Comment
             UpdateAndSave(comment);
         }
 
+        public void AddComment(string name, string email, string message, string articleId)
+        {
+            var comment = new Domain.CommentAgg.Comment(name, email, message, articleId);
+            unitOfWork.CommentRepository.Add(comment);
+            unitOfWork.SaveChanges();
+            unitOfWork.Dispose();
+        }
+
         private Domain.CommentAgg.Comment? getComment(string id)
         {
             return unitOfWork.CommentRepository.GetComment(id);
