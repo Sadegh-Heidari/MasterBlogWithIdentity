@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using DomainServices.Article;
 using DomainServices.ArticleCategory;
+using DomainServices.Comment;
 using DomainServices.UnitOfWork;
 using Infrastructure.EFCORE.Article;
 using Infrastructure.EFCORE.ArticleCategory;
+using Infrastructure.EFCORE.Comment;
 using Infrastructure.EFCORE.ContextDB;
 
 namespace Infrastructure.EFCORE.UnitOfWork
@@ -17,6 +19,7 @@ namespace Infrastructure.EFCORE.UnitOfWork
         private bool IsDisposed { get; set; }
         private IArticleCategoryRepository _articleCategoryRepository;
         private IArticleRepository _articleRepository;
+        private ICommentRepository _commentRepository;
         private MasterContext _masterContext { get; }
 
         public UnitOfWork(MasterContext masterContext)
@@ -47,6 +50,19 @@ namespace Infrastructure.EFCORE.UnitOfWork
                 }
 
                 return _articleRepository;
+            }
+        }
+
+        public ICommentRepository CommentRepository
+        {
+            get
+            {
+                if (_commentRepository == null)
+                {
+                    _commentRepository = new CommentRepository(_masterContext);
+                }
+
+                return _commentRepository;
             }
         }
 

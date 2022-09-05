@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DomainServices.Article;
 using DomainServices.ArticleCategory;
+using DomainServices.Comment;
 
 namespace DomainServices.UnitOfWork
 {
@@ -12,6 +13,7 @@ namespace DomainServices.UnitOfWork
     {
         public IArticleCategoryRepository ArticleCategoryRepository { get;  }
         public IArticleRepository ArticleRepository { get; }
+        public ICommentRepository CommentRepository { get; }
         void SaveChanges();
         void Dispose();
     }

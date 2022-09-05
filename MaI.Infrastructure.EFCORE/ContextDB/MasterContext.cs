@@ -13,6 +13,7 @@ namespace Infrastructure.EFCORE.ContextDB
     {
         public DbSet<Domain.ArticleCategoryAgg.ArticleCategory> ArticleCateogries { get; set; }
         public DbSet<Domain.ArticleAgg.Article> Articles { get; set; }
+        public DbSet<Domain.CommentAgg.Comment> Comments { get; set; }
         public MasterContext(DbContextOptions<MasterContext> options) : base(options)
         {
         }

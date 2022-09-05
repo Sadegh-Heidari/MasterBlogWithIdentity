@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.ArticleCategoryAgg;
 using Domain.BaseDomainAgg;
+using Domain.CommentAgg;
 
 namespace Domain.ArticleAgg
 {
@@ -18,6 +19,7 @@ namespace Domain.ArticleAgg
 
         public string ArticleCategoryId { get; private set; }
         public ArticleCategory ArticleCategory { get; private set; }
+        public ICollection<Comment> Comments { get; private set; }
 
         protected Article()
         {
