@@ -3,10 +3,6 @@
 @{
 }
 
-<p>
-    <a asp-action="CreatUsersAdmin">Create New</a>
-</p>
-
 <table class="table">
     <thead>
         <tr>
@@ -63,8 +59,9 @@
                     
                 }*@
                 <td>
-                    <a asp-page-handler="Delete" asp-route-id="@item.Id">Delete |</a>
-                    <a asp-page-handler="Delete" asp-route-id="@item.Id">Add User Role</a>
+                    <a asp-page-handler="Delete" asp-route-id="@item.Id">Delete |</a><br/>
+                    <a asp-page="AddUserRole" asp-route-id="@item.Id">Add User Role |</a><br />
+                    <a asp-page="UserRoles" asp-route-id="@item.Id">User Role |</a><br />
                 </td>
             </tr>
         }

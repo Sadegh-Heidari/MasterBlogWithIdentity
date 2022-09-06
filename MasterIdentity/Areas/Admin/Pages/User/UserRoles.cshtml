@@ -1,0 +1,19 @@
+﻿@page "{id}"
+@model MasterIdentity.Areas.Admin.Pages.User.UserRolesModel
+@{
+}
+<table class="table">
+    <thead>
+        <tr>
+            <td>Role Name</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.usersRole.RoleUsers)
+        {
+            <tr>
+                <td>@item</td>
+            </tr>
+        }
+    </tbody>
+</table>

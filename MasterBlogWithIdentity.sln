@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasterIdentity", "MasterIde
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Utility", "Infrastructure.Utility\Infrastructure.Utility.csproj", "{0C2A32D4-3B6D-4691-968F-1319EB0263EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Query.EFCORE", "Infrastructure.Query.EFCORE\Infrastructure.Query.EFCORE.csproj", "{4E56DB58-4C73-49C0-AD44-F7669F703C15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Query.EFCORE", "Infrastructure.Query.EFCORE\Infrastructure.Query.EFCORE.csproj", "{4E56DB58-4C73-49C0-AD44-F7669F703C15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

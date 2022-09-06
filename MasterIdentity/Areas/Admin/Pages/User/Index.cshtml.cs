@@ -9,10 +9,12 @@ namespace MasterIdentity.Areas.Admin.Pages.User
     {
         public List<GetUserDto>? UserList { get; set; }
         private UserManager<IdentityUser> _userManager { get; }
+        private SignInManager<IdentityUser> _signInManager { get; }
 
-        public IndexModel(UserManager<IdentityUser> userManager)
+        public IndexModel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public void OnGet()
@@ -32,6 +34,7 @@ namespace MasterIdentity.Areas.Admin.Pages.User
         {
             var find = await _userManager.FindByIdAsync(id);
             await _userManager.DeleteAsync(find);
+            await _signInManager.SignOutAsync();
             return RedirectToPage("./Index");
         }
     }

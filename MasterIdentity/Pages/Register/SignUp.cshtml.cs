@@ -1,4 +1,5 @@
-using MasterIdentity.Pages.Register.ViewModel;
+﻿using MasterIdentity.Pages.Register.ViewModel;
+using MasterIdentity.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -40,8 +41,18 @@ namespace MasterIdentity.Pages.Register
                 
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(NewUser, true);
-                    return RedirectToPage("/Index");
+                    
+                    var token =await _userManager.GenerateEmailConfirmationTokenAsync(NewUser);
+                    var callbackURL = Url.PageLink("ConfirmEmail", null, new
+                    {
+                        Id = NewUser.Id,
+                        Token = token
+                    }, Request.Scheme);
+                    string Body = "<h1>Please Accept your Email</h1>" +
+                                  $"<br/><a href={callbackURL}>link</a>";
+                    EmailSender.Execute(NewUser.Email, Body, "Accept Email");
+                    TempData["ConfirmEmail"] = "Information has been successfully registered,Please Accept your Email and then Log In";
+                    return Page();
                 }
                 if (!result.Succeeded)
                 {

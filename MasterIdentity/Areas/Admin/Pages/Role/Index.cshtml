@@ -1,0 +1,36 @@
+﻿@page
+@model MasterIdentity.Areas.Admin.Pages.Role.IndexModel
+@{
+}
+
+<p>
+    <a asp-page="./CreatRole">Create New</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Rolelist) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-page-handler="Delete" asp-route-id="@item.Id">Delete |</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
