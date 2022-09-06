@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Application.Article;
+﻿using Application.Article;
 using Application.ArticleCategory;
 using Application.Comment;
 using ApplicationServices.Article;
@@ -11,7 +6,6 @@ using ApplicationServices.ArticleCategory;
 using ApplicationServices.Comment;
 using DomainServices.Article;
 using DomainServices.ArticleCategory;
-using DomainServices.Base;
 using DomainServices.Comment;
 using DomainServices.UnitOfWork;
 using Infrastructure.EFCORE.Article;
@@ -20,7 +14,6 @@ using Infrastructure.EFCORE.Comment;
 using Infrastructure.EFCORE.ContextDB;
 using Infrastructure.EFCORE.UnitOfWork;
 using Infrastructure.Query.EFCORE;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
