@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> userman
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -60,10 +62,14 @@
                         <li class="nav-item">
                             <a asp-page="/Index" class="nav-link ">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a asp-area="Admin" asp-page="Index" class="nav-link active ">Administrator</a>
-                        </li>
-                        @if (User.Identity.IsAuthenticated==false)
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a asp-area="Admin" asp-page="Index" class="nav-link active ">Administrator</a>
+                            </li>
+                        }
+                       
+                        @if (!User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
                                 <a asp-area="" asp-page="/Register/SignUp" class="nav-link active ml-auto">SignUp</a>
@@ -73,7 +79,7 @@
                                 <a asp-area="" asp-page="/Register/LogIn" class="nav-link active ml-auto">LogIn</a>
                             </li>
                         }
-                        @if (User.Identity.IsAuthenticated == true)
+                        @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
                                 <a asp-area="" asp-page="/Register/logIn" asp-page-handler="LogOut" class="nav-link active ml-auto">LogOut</a>

@@ -80,35 +80,49 @@
                                 </div>
                             }
                         </div>
-                        <div class="add-comment">
-                            <header>
-                                <h3 class="h6">Leave a reply</h3>
-                            </header>
+                        @if (TempData["UserNull"] != null)
+                        {
 
-                            <form method="post">
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <input type="text" asp-for="CommentViewModel.UserName" placeholder="Name" class="form-control">
-                                        <span class="text text-danger" asp-validation-for="CommentViewModel.UserName"></span>
 
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <input type="email" asp-for="CommentViewModel.Email" placeholder="Email Address (will not be published)" class="form-control">
-                                        <span class="text text-danger" asp-validation-for="CommentViewModel.Email"></span>
+                            <div class="alert alert-danger">
+                                <text>@TempData["UserNull"]</text>
+                            </div>
+                        }
+                        @if (User.Identity?.IsAuthenticated==true)
+                        {
 
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <textarea asp-for="CommentViewModel.Message" placeholder="Type your comment" class="form-control"></textarea>
-                                        <span class="text text-danger" asp-validation-for="CommentViewModel.Message"></span>
-                                        <input type="hidden" asp-for="CommentViewModel.ArticleId" value="@Model.Article.Id" />
+                            <div class="add-comment">
 
+                                <header>
+                                    <h3 class="h6">Leave a reply</h3>
+                                </header>
+
+                                <form method="post">
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <input type="text" asp-for="CommentViewModel.UserName" placeholder="Name" class="form-control">
+                                            <span class="text text-danger" asp-validation-for="CommentViewModel.UserName"></span>
+
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label asp-for="CommentViewModel.Email" class="form-label m-auto p-0">Email : @Model.CommentViewModel.Email</label>
+                                            <input type="hidden" asp-for="CommentViewModel.Email"/>
+                                            <span class="text text-danger" asp-validation-for="CommentViewModel.Email"></span>
+
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <textarea asp-for="CommentViewModel.Message" placeholder="Type your comment" class="form-control"></textarea>
+                                            <span class="text text-danger" asp-validation-for="CommentViewModel.Message"></span>
+                                            <input type="hidden" asp-for="CommentViewModel.ArticleId" value="@Model.Article.Id"/>
+
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <button type="submit" class="btn btn-secondary">Submit CreatComment</button>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-12">
-                                        <button type="submit" class="btn btn-secondary">Submit CreatComment</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                                </form>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

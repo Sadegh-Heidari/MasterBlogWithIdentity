@@ -1,11 +1,17 @@
 using Infrastructure.EFCORE.ContextDB;
 using Infrastructure.Utility.ServicePresentationLayyer;
+using MasterIdentity.ClaimAndPolicyClass;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(op =>
+{
+    op.Conventions.AuthorizeAreaFolder("Admin", "/", "Admin");
+});
 builder.Services.AddIoc(builder.Configuration.GetConnectionString("Sql"));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<MasterContext>().AddDefaultTokenProviders();
@@ -23,7 +29,14 @@ builder.Services.ConfigureApplicationCookie(x =>
     x.LoginPath = "/Register/LogIn";
     x.SlidingExpiration = true;
 });
-
+builder.Services.AddAuthorization(x =>
+{
+    x.AddPolicy("Admin", c =>
+    {
+        c.RequireRole("Admin");
+    });
+});
+builder.Services.AddScoped<IClaimsTransformation, AddClaim>();
 var app = builder.Build();
 app.Services.AutoCreatDataBase();
 // Configure the HTTP request pipeline.

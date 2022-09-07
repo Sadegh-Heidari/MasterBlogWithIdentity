@@ -25,18 +25,34 @@ namespace MasterIdentity.Pages.Register
         {
             if (ModelState.IsValid)
             {
+                
                 var UserFind = await _userManager.FindByEmailAsync(login.Email);
+
                 if (UserFind == null)
                 {
                     ModelState.AddModelError(String.Empty,"The User is not exist. Please Sing Up");
                     return Page();
                 }
 
+                if (UserFind.EmailConfirmed == false)
+                {
+                    ModelState.AddModelError(String.Empty, "Please Confirm Your Email");
+                    return Page();
+
+                }
                 var result =
                     await _signInManager.PasswordSignInAsync(UserFind, login.Password, login.IsPersistance, false);
+                
                 if (result.Succeeded)
                 {
                     return RedirectToPage("/Index");
+                }
+                
+                if(!result.Succeeded)
+                {
+                    
+                    ModelState.AddModelError("","Your Password is not correct");
+                    return Page();
                 }
             }
 
